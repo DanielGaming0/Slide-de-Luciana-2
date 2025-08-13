@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.getElementById('nextBtn');
     const slideIndicators = document.querySelector('.slide-indicators');
     let currentSlide = 0;
+    let isAnimating = false;
     
     // Criar indicadores de slide
     slides.forEach((slide, index) => {
@@ -16,17 +17,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mostrar slide atual
     function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.style.transform = `translateX(${100 * (i - index)}%)`;
-            slide.classList.toggle('active', i === index);
-        });
+        if (isAnimating) return;
+        isAnimating = true;
         
         // Atualizar indicadores
         document.querySelectorAll('.slide-indicator').forEach((indicator, i) => {
             indicator.classList.toggle('active', i === index);
         });
         
+        // Animação de transição
+        slides.forEach((slide, i) => {
+            slide.style.transform = `translateX(${100 * (i - index)}%)`;
+            slide.classList.toggle('active', i === index);
+        });
+        
         currentSlide = index;
+        
+        // Resetar flag após a transição
+        setTimeout(() => {
+            isAnimating = false;
+        }, 500);
     }
     
     // Navegar para slide específico
@@ -65,6 +75,26 @@ document.addEventListener('DOMContentLoaded', function() {
         if (difference < -50) goToSlide(currentSlide - 1); // Swipe para direita
     }
     
+    // Efeito de hover para elementos
+    document.querySelectorAll('.hover-effect').forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            element.style.transform = 'translateY(-5px)';
+            element.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3)';
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            element.style.transform = '';
+            element.style.boxShadow = '';
+        });
+    });
+    
     // Inicializar
     showSlide(0);
+    
+    // Auto-avanço opcional (descomente se quiser)
+    /*
+    setInterval(() => {
+        goToSlide(currentSlide + 1);
+    }, 8000);
+    */
 });
