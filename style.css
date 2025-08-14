@@ -635,25 +635,22 @@ p {
 
 /* Adicione estas regras ao seu CSS existente */
 
-.title-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 20px;
+.logo-container {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
 }
 
-.title-logo {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+.logo-image {
+  width: 120px;
+  height: auto;
+  margin-bottom: 15px;
   border-radius: 50%;
   border: 3px solid white;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.title-text {
-  text-align: left;
 }
 
 .authors {
@@ -661,9 +658,6 @@ p {
   font-family: 'Inter', sans-serif;
   color: rgba(255,255,255,0.9);
   text-align: center;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .authors-title {
@@ -679,18 +673,8 @@ p {
 
 /* Ajuste para telas menores */
 @media (max-width: 768px) {
-  .title-header {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .title-logo {
+  .logo-image {
     width: 80px;
-    height: 80px;
-  }
-  
-  .title-text {
-    text-align: center;
   }
   
   .authors-title {
