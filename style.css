@@ -632,3 +632,56 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+/* Adicione estas regras ao seu CSS existente */
+
+.logo-container {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+}
+
+.logo-image {
+  width: 120px;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.authors {
+  margin-top: 20px;
+  font-family: 'Inter', sans-serif;
+  color: rgba(255,255,255,0.9);
+  text-align: center;
+}
+
+.authors-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.authors-names {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+  .logo-image {
+    width: 80px;
+  }
+  
+  .authors-title {
+    font-size: 14px;
+  }
+  
+  .authors-names {
+    font-size: 12px;
+  }
+}
